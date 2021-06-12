@@ -21,11 +21,11 @@ game.addEventListener("click", (event) => {
 const winnerCheck = () => {
   let allBlocks = document.getElementsByClassName("block");
 
-  function reset() {
+  const reset = () => {
     Array.from(allBlocks).forEach((block) => {
-        block.innerHTML = null;
-    })
-  }
+      block.innerHTML = null;
+    });
+  };
 
   const iteration = (idList, argument) => {
     if (
@@ -33,18 +33,17 @@ const winnerCheck = () => {
       allBlocks[idList[1]].innerHTML == argument &&
       allBlocks[idList[2]].innerHTML == argument
     ) {
-      alert(`${argument} won!`);
-      reset();
+     alert(argument + ' won')
+        reset();
 
       return;
     }
-    
+
     let count = Array.from(allBlocks).filter((block) => {
-        return !!block.innerHTML;
-      }).length
-    if (count == 9)
-     {
-      alert("no");
+      return !!block.innerHTML;
+    }).length;
+    if (count == 9) {
+      alert("noone won");
       reset();
     }
     console.log(
@@ -71,4 +70,7 @@ const winnerCheck = () => {
   iteration([2, 5, 8], "o");
   iteration([0, 4, 8], "o");
   iteration([6, 4, 2], "o");
+
 };
+
+

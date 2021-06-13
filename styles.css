@@ -1,16 +1,67 @@
 #game {
-    height: 300px;
-    width: 300px;
-    background-color: tomato;
+  height: 300px;
+  width: 300px;
+  background-color: tomato;
+  position: relative;
+}
+
+.pop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: .3;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+}
+
+.pop-on {
+    z-index: 10;
 }
 
 .block {
-    border: 1px solid white;
-    height: 100px;
-    width: 100px;
-    float: left;
-    box-sizing: border-box;
-    text-align:  center;
-    line-height: 100px;
-    font-size: 50px;
+  border: 1px solid white;
+  height: 100px;
+  width: 100px;
+  float: left;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 100px;
+  font-size: 50px;
+}
+
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 25px;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
 }

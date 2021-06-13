@@ -1,8 +1,13 @@
 const game = document.getElementById("game");
+const alertMessage = document.getElementById("alert");
+const resetBtn = document.getElementById("reset");
 
 for (let i = 0; i < 9; i++) {
   game.innerHTML += '<div class="block"></div>';
 }
+game.innerHTML+= '<div class="pop"></div>';
+let allBlocks = document.querySelectorAll(".block");
+let popUp = document.querySelector(".pop");
 let step = 0;
 game.addEventListener("click", (event) => {
   console.log(event.target.className);
@@ -17,25 +22,23 @@ game.addEventListener("click", (event) => {
     winnerCheck();
   }
 });
+const reset = () => {
+  Array.from(allBlocks).forEach((block) => {
+    block.innerHTML = null;
+  });
+  popUp.classList.remove("pop-on");
+  alertMessage.textContent = null;
+};
 
 const winnerCheck = () => {
-  let allBlocks = document.getElementsByClassName("block");
-
-  const reset = () => {
-    Array.from(allBlocks).forEach((block) => {
-      block.innerHTML = null;
-    });
-  };
-
   const iteration = (idList, argument) => {
     if (
       allBlocks[idList[0]].innerHTML == argument &&
       allBlocks[idList[1]].innerHTML == argument &&
       allBlocks[idList[2]].innerHTML == argument
     ) {
-     alert(argument + ' won')
-        reset();
-
+      alertMessage.textContent = `${argument} won`;
+        popUp.classList.add("pop-on");
       return;
     }
 
@@ -43,8 +46,8 @@ const winnerCheck = () => {
       return !!block.innerHTML;
     }).length;
     if (count == 9) {
-      alert("noone won");
-      reset();
+      alertMessage.textContent = "noone won";
+      popUp.classList.add("pop-on");
     }
     console.log(
       Array.from(allBlocks).filter((block) => {
@@ -70,7 +73,5 @@ const winnerCheck = () => {
   iteration([2, 5, 8], "o");
   iteration([0, 4, 8], "o");
   iteration([6, 4, 2], "o");
-
 };
-
-
+resetBtn.addEventListener("click", reset);
